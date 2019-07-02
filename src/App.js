@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Home from './pages/home/Home.js';
+import Create from './pages/create/Create.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {screen: 'home'};
+        this.goTo = this.goTo.bind(this);
+    }
+
+    render(props){
+        switch(this.state.screen) {
+            case 'home':
+                return <Home/>            
+            case 'create':
+                return <Create/>
+        }
+    }
+
+    goTo(newScreen) {
+        this.setState({screen: newScreen});
+    }
 }
-
-export default App;
