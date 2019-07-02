@@ -12,3 +12,11 @@ export default function Home(props) {
         </div>
     )
 }
+
+function logoHeader(props) {
+    let width = window.innerWidth;
+
+    return (
+        <img></img>
+    )
+}
