@@ -7,7 +7,7 @@ import './Home.css'
 export default function Home(props) {
     return (
         <div>
-            <img id="logo" src={logo} width="400" height="200"></img>
+            <img id="logo" src={logo}></img>
             <Menu />
         </div>
     )

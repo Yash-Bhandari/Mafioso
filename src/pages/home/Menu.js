@@ -30,7 +30,7 @@ function InputButton (props) {
     return (
         <div id='game-code'>
             <div id='game-code-input-left'>
-                <input id='game-code-input' type='text' name='game-code' width='5'></input>
+                <input id='game-code-input' type='text' placeholder='code' name='game-code' width='5'></input>
             </div>
             <div id='game-code-input-right'>
                 <button className='game-code-button' onClick={()=>this.setState({clicked: true})}>Join Game</button>
