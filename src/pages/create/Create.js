@@ -33,6 +33,7 @@ export default class Create extends React.Component {
                 <h1 className='page-header'>Game Creation</h1>
                 {this.renderAddedRoles()}
                 <AddRole addRole={this.addRole}/>
+                <button className='main-menu-button'>Start Game</button>
             </div>
         );
     }

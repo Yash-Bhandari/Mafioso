@@ -31,6 +31,7 @@ function handleClick(addRoleFunction){
     let roleQuantity = $('input.role-add-quantity').val();
     if(roleQuantity === '')
         roleQuantity = 1;
+        
     $('input.role-add-name').val('')
     $('input.role-add-quantity').val('')
     console.log({name: roleName, quantity: roleQuantity})

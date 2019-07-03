@@ -22,4 +22,19 @@
   margin-top: 5%;
   margin-bottom: 5%;
  }
+
+ .main-menu-button {
+    height: 4rem;
+    width: 20rem;
+    display: block;
+    margin: auto;
+    margin-top: 5rem;
+    background-color: #c10000;
+    border: none;
+    border-radius: 1rem;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: arial;
+    box-shadow: 10px 10px 5px #888888;
+  }
  
