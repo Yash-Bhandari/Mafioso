@@ -6,56 +6,20 @@
  }
  
  body {
-   background-color: #eeeeee;
+  background-color: #eeeeee;
+ }
+
+ button {
+  background-color: #c10000;
+  box-shadow: 10px 10px 5px #888888;
+  border: none;
+ }
+
+ .page-header {
+  text-align: center;
+  color: #c10000;
+  font-size: 3rem;
+  margin-top: 5%;
+  margin-bottom: 5%;
  }
  
- nav a {
-   text-decoration: none;
-   text-align: center;
-   color: #c10000;
-   font-size: 20px;
-   line-height:70px;
-   padding: 1.5rem;
-   border: 0;
- }
- 
- a:link {
-   background: #dedede;
- }
- 
- a:hover {
-   color: black;
-   background: #c10000;
- }
- 
- nav{
-   font-size: 0px;
-   height: 70px;
-   text-align: center;
-   background: #dedede;
- }
- 
- .text-content{
-   line-height: 1.3rem;
-   width: 70%;
-   margin-left: auto;
-   margin-right: auto;
-   margin-top: 2rem;
- }
- 
- .text-content p{
-   margin-top: 2rem;
- }
- 
- #content {
-   width: 60%;
-   margin: 0 auto;
- }
- 
- #user-actions{
-   margin-top: 2rem;
- }
- 
- h2 {
-   text-align: center;
- }

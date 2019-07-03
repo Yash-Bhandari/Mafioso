@@ -2,6 +2,9 @@ img {
     display: block;
     max-width: 100%;
     margin: auto;
+    padding-top: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
 }
 
 #game-code {
@@ -14,11 +17,9 @@ img {
     height: 4rem;
     width: 10rem;
     margin-left: 0%;
-    background-color: #c10000;
     border: none;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    box-shadow: 10px 10px 5px #888888;
     font-size: 20px;
     font-weight: bold;
     font-family: arial;

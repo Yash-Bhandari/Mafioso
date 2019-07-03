@@ -12,7 +12,7 @@ export default class App extends React.Component{
     render(props){
         switch(this.state.screen) {
             case 'home':
-                return <Home/>            
+                return <Home goTo={this.goTo}/>            
             case 'create':
                 return <Create/>
         }
