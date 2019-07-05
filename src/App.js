@@ -5,7 +5,10 @@ import Create from './pages/create/Create.js';
 export default class App extends React.Component{
     constructor(props){
         super(props);
-        this.state = {screen: 'home'};
+        this.state = {
+            screen: 'home',
+            backend: 'http://localhost:8080/mafioso'    
+        };
         this.goTo = this.goTo.bind(this);
     }
 
@@ -14,7 +17,7 @@ export default class App extends React.Component{
             case 'home':
                 return <Home goTo={this.goTo}/>            
             case 'create':
-                return <Create/>
+                return <Create goTo={this.goTo} backend={this.state.backend}/>
         }
     }
 

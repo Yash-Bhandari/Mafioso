@@ -33,10 +33,19 @@ export default class Create extends React.Component {
                 <h1 className='page-header'>Game Creation</h1>
                 {this.renderAddedRoles()}
                 <AddRole addRole={this.addRole}/>
-                <button className='main-menu-button'>Start Game</button>
+                <button className='main-menu-button' onClick={()=>createGame()}>Start Game</button>
             </div>
         );
     }
 
-
+    createGame(){
+        const request = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: this.state.addedRoles
+        };
+        let response = await fetch(this.props.backend, request);
+        let gameCode = response.headers.get('gameCode');
+        this.props.goTo('host' + gameCode);
+    }
 }
