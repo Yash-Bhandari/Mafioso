@@ -32,6 +32,10 @@ img {
     font-size: 3rem;
     text-transform: uppercase;
     text-align: center;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+    box-shadow: 10px 10px 5px #888888;
+    border: 0;
 }
 
 #main-menu {
