@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css';
-import { genericTypeAnnotation, tsPropertySignature } from '@babel/types';
+import * as $ from 'jquery';
 
 export default function Menu(props){
     return (
@@ -21,7 +21,7 @@ class JoinButton extends React.Component {
         return (
             !this.state.clicked ? 
                 <button className='main-menu-button' onClick={()=>this.setState({clicked: true})}>Join Game</button>:
-                <InputButton goTo={this.props.goTo}/>
+                <InputButton goTo={this.props.goTo} backend={this.props.backend}/>
         )
     }
 }
@@ -33,10 +33,17 @@ function InputButton (props) {
                 <input id='game-code-input' type='text' placeholder='code' name='game-code' width='5'></input>
             </div>
             <div id='game-code-input-right'>
-                <button className='game-code-button' onClick={()=>props.goTo('join')}>Join Game</button>
+                <button className='game-code-button' onClick={()=>joinGame(props.backend)}>Join Game</button>
             </div>
         </div>
     )
+}
+
+async function joinGame(backend) {
+    let gameCode = $('input.game-code-button').val();
+    
+    let response = await fetch(backend + '/' + gameCode);
+
 }
 
 function goTo(url) {

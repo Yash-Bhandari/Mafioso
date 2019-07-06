@@ -23,6 +23,7 @@ const roleDataList = (
         <option value='Gravedigger'></option>
         <option value='Lookout'></option>
         <option value='Mayor'></option>
+        <option value='Townie'></option>
     </datalist>
 )
 
@@ -34,7 +35,6 @@ function handleClick(addRoleFunction){
         
     $('input.role-add-name').val('')
     $('input.role-add-quantity').val('')
-    console.log({name: roleName, quantity: roleQuantity})
     addRoleFunction({
         name: roleName,
         quantity: roleQuantity

@@ -8,7 +8,7 @@ export default function Home(props) {
     return (
         <div>
             <img id="logo" src={logo}></img>
-            <Menu goTo={props.goTo}/>
+            <Menu goTo={props.goTo} backend={props.backend}/>
         </div>
     )
 }

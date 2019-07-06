@@ -1,0 +1,60 @@
+#join-choose-name {
+    width: 20rem;
+    margin: auto;
+    margin-top: 5%;
+}
+
+#join-username {
+    width: 13rem;
+    height: 3rem;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+    font-size: 20px;
+}
+
+#join-submit {
+    width: 7rem;
+    height: 3rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    font-size: 20px;
+}
+
+#players-and-roles {
+    width: 18rem;
+    margin: auto;
+}
+
+#players-list {
+    width: 8.5rem;
+    margin: auto;
+    margin-right: 0.5rem;
+    display: inline-block;
+}
+
+#roles-list {
+    width: 8.5rem;
+    margin: auto;
+    margin-left: 0.5rem;
+    display: inline-block;
+}
+
+#available-role-header {
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    color: #c10000;
+}
+
+.available-role {
+    text-align: center;
+    font-size: 20;
+    background: #c10000;
+    border-radius: 1rem;
+    color: #dedede;
+    font-size: 20px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: 10px 10px 5px #888888;
+    margin-bottom: 1rem;
+}
