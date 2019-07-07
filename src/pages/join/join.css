@@ -30,6 +30,7 @@
     margin: auto;
     margin-right: 0.5rem;
     display: inline-block;
+    vertical-align: top;
 }
 
 #roles-list {
@@ -37,9 +38,10 @@
     margin: auto;
     margin-left: 0.5rem;
     display: inline-block;
+    vertical-align: top;
 }
 
-#available-role-header {
+#list-header {
     text-align: center;
     margin-top: 10%;
     margin-bottom: 10%;

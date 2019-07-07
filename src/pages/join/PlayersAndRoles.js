@@ -2,6 +2,7 @@ import React from 'react';
 import './join.css'
 
 export default function PlayersAndRoles(props){
+    //console.log(props);
     let availableRoles = [];
     let joinedPlayers = [];
     props.roles.forEach(role => availableRoles.push(<Role role={role}/>))
@@ -9,11 +10,11 @@ export default function PlayersAndRoles(props){
     return (
         <div id='players-and-roles'>
             <div id='players-list'>
-                <h2 id='available-role-header'>Players</h2>
+                <h2 id='list-header'>Players</h2>
                 {joinedPlayers}
             </div>
             <div id='roles-list'>
-                <h2 id='available-role-header'>Available Roles</h2>
+                <h2 id='list-header'>Roles</h2>
                 {availableRoles}
             </div>
         </div>
