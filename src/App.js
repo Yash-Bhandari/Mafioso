@@ -9,7 +9,7 @@ export default class App extends React.Component{
         super(props);
         this.state = {
             screen: 'home',
-            backend: 'http://localhost:8080/mafioso'    
+            backend: 'https://mafioso-app.herokuapp.com/'    
         };
         this.goTo = this.goTo.bind(this);
     }
