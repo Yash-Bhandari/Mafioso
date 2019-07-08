@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Mafioso/static/css/main.d89a2dcc.chunk.css",
+    "main.js": "/Mafioso/static/js/main.d5162159.chunk.js",
+    "main.js.map": "/Mafioso/static/js/main.d5162159.chunk.js.map",
+    "runtime~main.js": "/Mafioso/static/js/runtime~main.4404cf29.js",
+    "runtime~main.js.map": "/Mafioso/static/js/runtime~main.4404cf29.js.map",
+    "static/js/2.cac65c5b.chunk.js": "/Mafioso/static/js/2.cac65c5b.chunk.js",
+    "static/js/2.cac65c5b.chunk.js.map": "/Mafioso/static/js/2.cac65c5b.chunk.js.map",
+    "index.html": "/Mafioso/index.html",
+    "precache-manifest.774879ee8fdbfc7ff5d888078ed2d6d8.js": "/Mafioso/precache-manifest.774879ee8fdbfc7ff5d888078ed2d6d8.js",
+    "service-worker.js": "/Mafioso/service-worker.js",
+    "static/css/main.d89a2dcc.chunk.css.map": "/Mafioso/static/css/main.d89a2dcc.chunk.css.map",
+    "static/media/mafioso-logo.svg": "/Mafioso/static/media/mafioso-logo.c4178e9f.svg"
+  }
+}

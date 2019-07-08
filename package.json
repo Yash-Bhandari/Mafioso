@@ -2,7 +2,9 @@
   "name": "mafioso",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://yash-bhandari.github.io/Mafioso/",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "jquery": "^3.4.1",
     "react": "^16.8.6",
     "react-browser-router": "^2.1.2",
