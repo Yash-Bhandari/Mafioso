@@ -53,7 +53,7 @@ export default class Join extends React.Component {
                 yourRole: reply.role,
                 id: reply.id
             })
-        ); 
+        );
     }
 
     render(props){
