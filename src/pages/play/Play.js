@@ -35,7 +35,7 @@ export default class Join extends React.Component {
 
     updatePlayersAndRoles = (serverLiason) => {
         serverLiason.getPlayersAndRoles().then(
-            playersAndRoles => this.setState({roles: playersAndRoles.roles, players: playersAndRoles.players})
+            playersAndRoles => this.setState({roles: playersAndRoles.roles.sort(), players: playersAndRoles.players.sort()})
         );
         if (this.isFull())
             window.clearInterval(this.state.updater);
