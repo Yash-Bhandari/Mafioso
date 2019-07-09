@@ -1,32 +1,19 @@
 import React from 'react';
 import Home from './pages/home/Home.js';
 import Create from './pages/create/Create.js';
-import Join from './pages/join/Join.js';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-browser-router';
+import Play from './pages/play/Play.js';
+import {BrowserRouter as Router, Route, Switch} from 'react-browser-router';
 
-export default class App extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            screen: 'home',
-            backend: 'https://mafioso-app.herokuapp.com/'    
-        };
-        this.goTo = this.goTo.bind(this);
-    }
+let backend = 'https://mafioso-app.herokuapp.com/mafioso/'  
 
-    render(props){
-        return (
+export default function App(props){
+    return (
         <Router> 
             <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route path='/create' component={Create}/>
-                <Route path='/:gameCode' component={Join}/>
+                <Route exact path='/' render={(props)=><Home backend={backend} {...props}/>}/>
+                <Route path='/create' render={(props)=><Create backend={backend} {...props}/>}/>
+                <Route path='/:gameCode' render={(props)=><Play backend={backend} {...props}/>}/>
             </Switch>
         </Router>
-        )
-    }
-
-    goTo(newScreen) {
-        this.setState({screen: newScreen});
-    }
+    )
 }

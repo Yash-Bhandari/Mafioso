@@ -23,6 +23,7 @@
 #players-and-roles {
     width: 18rem;
     margin: auto;
+    margin-bottom: 5%;
 }
 
 #players-list {
@@ -59,4 +60,21 @@
     padding-bottom: 0.5rem;
     box-shadow: 10px 10px 5px #888888;
     margin-bottom: 1rem;
+}
+
+.role-card {
+    margin: auto;
+    width: 18rem;
+}
+
+.role-card-side {
+    width: 18rem;
+    height: 4rem;
+    line-height: 4rem;
+    background: #c10000;
+    color: #dedede;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 5px #888888;
 }

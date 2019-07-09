@@ -1,5 +1,5 @@
 import React from 'react';
-import './join.css'
+import './play.css'
 
 export default function PlayersAndRoles(props){
     //console.log(props);

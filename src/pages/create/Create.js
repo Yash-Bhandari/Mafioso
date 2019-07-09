@@ -53,9 +53,9 @@ export default class Create extends React.Component {
             body: JSON.stringify({roles: roleList})
         };
         console.log(request);
-        let response = await fetch(this.props.backend + '/create', request);
+        let response = await fetch(this.props.backend + 'create', request);
         let gameCode = response.headers.get('gameCode');
         console.log(gameCode);
-        window.location.href = '/' + gameCode;
+        //window.location.href = '/' + gameCode;
     }
 }
