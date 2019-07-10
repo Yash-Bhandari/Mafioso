@@ -56,6 +56,6 @@ export default class Create extends React.Component {
         let response = await fetch(this.props.backend + 'create', request);
         let gameCode = response.headers.get('gameCode');
         console.log(gameCode);
-        //window.location.href = '/' + gameCode;
+        window.location.href = 'host/' + gameCode;
     }
 }

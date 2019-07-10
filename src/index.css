@@ -49,4 +49,12 @@
     text-align: center;
     color: #c10000;
   }
+
+  .card {
+    background-color: #c10000;
+    border: none;
+    box-shadow: 10px 10px 5px #888888;
+    border-radius: 1rem;
+    color: #dedede;
+  }
  
