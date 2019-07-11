@@ -9,7 +9,7 @@ export default function Menu(props){
     return (
         <div id='main-menu'>
                 <JoinButton backend={props.backend}/>           
-                <button className='main-menu-button' onClick={()=>goTo('create')}>Create Game</button>
+                <button className='main-menu-button' onClick={()=>goTo('host')}>Create Game</button>
         </div>
     )
 }

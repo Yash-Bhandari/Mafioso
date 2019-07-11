@@ -57,4 +57,13 @@
     border-radius: 1rem;
     color: #dedede;
   }
+
+  .card-left {
+    background-color: #c10000;
+    border: none;
+    box-shadow: 10px 10px 5px #888888;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    color: #dedede;
+  }
  

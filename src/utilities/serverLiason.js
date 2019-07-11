@@ -10,13 +10,9 @@ export default function ServerLiason(backend, gameCode){
         return playersAndRoles;
     }
 
-    this.getRoleList = (id) => {
-        let roleList;
-        fetch(backend + gameCode + '/' + id)
+    this.getRoleList = async(id) => {
+        return fetch(backend + gameCode + '/' + id)
             .then(response => response.json())
-            .then(json => JSON.parse(json))
-            .then(result => roleList = result);
-        return roleList;
     }
 
     this.joinGame = async (playerName) => {

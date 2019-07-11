@@ -4,8 +4,6 @@ import RoleCard from './RoleCard.js';
 import ServerLiason from '../../utilities/serverLiason';
 import './play.css';
 
-const backend = 'https://mafioso-app.herokuapp.com/'
-
 export default class Join extends React.Component {
     constructor(props){
         super(props);

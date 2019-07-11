@@ -1,13 +1,17 @@
 import React from 'react'
 import AddRole from './AddRole.js';
 import AddedRole from './AddedRole.js'
+import Host from '../host/Host.js';
 import './Create.css'
-import { tsImportEqualsDeclaration } from '@babel/types';
 
 export default class Create extends React.Component {
     constructor(props){
         super(props);
-        this.state = {addedRoles: []};
+        this.state = {
+            addedRoles: [],
+            gameStarted: false, 
+            Host: null
+        };
         this.addRole = this.addRole.bind(this);
         this.renderAddedRoles = this.renderAddedRoles.bind(this);
         this.createGame = this.createGame.bind(this);
@@ -28,6 +32,9 @@ export default class Create extends React.Component {
     }
 
     render(props){
+        if (this.state.gameStarted) {
+            return this.state.Host;
+        }
         return(
             <div>
                 <h1 className='page-header'>Game Creation</h1>
@@ -55,7 +62,11 @@ export default class Create extends React.Component {
         console.log(request);
         let response = await fetch(this.props.backend + 'create', request);
         let gameCode = response.headers.get('gameCode');
-        console.log(gameCode);
-        window.location.href = 'host/' + gameCode;
+        let id = response.headers.get('id');
+        console.log("id is : " + id);
+        this.setState({
+            gameStarted: true,
+            Host: <Host backend={this.props.backend} gameCode={gameCode} id={id}/>
+        })
     }
 }
