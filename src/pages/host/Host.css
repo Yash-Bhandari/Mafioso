@@ -41,6 +41,10 @@
     text-align: center;
 }
 
+.fill-status {
+    margin-top: -2rem;
+}
+
 #rope-icon {
     vertical-align: top;
     height: 4rem;

@@ -5,8 +5,9 @@ export default function PlayersAndRoles(props){
     //console.log(props);
     let availableRoles = [];
     let joinedPlayers = [];
-    props.roles.forEach(role => availableRoles.push(<Role role={role}/>))
-    props.players.forEach(player => joinedPlayers.push(<Role role={player}/>))
+    let key = 0;
+    props.roles.forEach(role => availableRoles.push(<Role role={role} key={key++}/>))
+    props.players.forEach(player => joinedPlayers.push(<Role role={player} key={key++}/>))
     return (
         <div id='players-and-roles'>
             <div id='players-list'>

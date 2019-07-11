@@ -52,11 +52,11 @@ export default class Host extends React.Component{
         });
         return (
             <div>
-                <h1 className='page-header'>Game Code: {this.state.gameCode}</h1>
+                <h1 className='page-header'>Code: {this.state.gameCode}</h1>
+                <h2 className='text fill-status'>{this.numJoined()} / {this.state.roles.length} Joined</h2>
                 <div className='host-role-list'>
                     {roles}
                 </div>
-                <h2 className='text'>{this.numJoined()} / {this.state.roles.length} Joined</h2>
             </div>
         )
     }
