@@ -2,7 +2,6 @@ import React from 'react';
 import Home from './pages/home/Home.js';
 import Create from './pages/create/Create.js';
 import Play from './pages/play/Play.js';
-import Host from './pages/host/Host.js';
 import {BrowserRouter as Router, Route, Switch} from 'react-browser-router';
 
 let backend = 'https://mafioso-app.herokuapp.com/mafioso/'  

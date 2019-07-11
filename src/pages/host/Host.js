@@ -1,7 +1,7 @@
 import React from 'react';
 import ServerLiason from '../../utilities/serverLiason';
 import './Host.css';
-import rope from './rope-icon.png';
+import rope from './rope-icon.svg';
 
 export default class Host extends React.Component{
     constructor(props){
