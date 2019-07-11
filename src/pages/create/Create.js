@@ -19,8 +19,8 @@ export default class Create extends React.Component {
 
     renderAddedRoles() {
         let roles = [];
-        for (var addedRole of this.state.addedRoles){
-            roles.push(<AddedRole role={addedRole}/>);
+        for (let i = 0; i < this.state.addedRoles.length; i++){
+            roles.push(<AddedRole role={this.state.addedRoles[i]} key={i}/>)
         }
         return roles;
     }

@@ -14,6 +14,10 @@
     font-size: 25px;
 }
 
+.host-role-list{
+    margin-bottom: 1.5rem;
+}
+
 .host-role{
     width: 18rem;
     height: 60px;

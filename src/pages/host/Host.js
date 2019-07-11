@@ -24,10 +24,19 @@ export default class Host extends React.Component{
     }
 
     updateRoles(serverLiason) {
+        if (this.state.roles.length != 0 && this.numJoined() === this.state.roles.length)
+            return;
         serverLiason.getRoleList(this.props.id).then(
             roleList => {
                 this.setState({roles: roleList})
             }
+        );
+    }
+
+    numJoined(){
+        return this.state.roles.reduce(
+            (total, role) => total += role.playerName === "" ? 0 : 1,
+            0
         );
     }
     
@@ -37,8 +46,9 @@ export default class Host extends React.Component{
 
     render(props) {
         let roles = [];
+        let key = 0;
         this.state.roles.forEach(role => {
-            roles.push(<Role role={role}/>)
+            roles.push(<Role role={role} key={key++}/>)
         });
         return (
             <div>
@@ -46,14 +56,14 @@ export default class Host extends React.Component{
                 <div className='host-role-list'>
                     {roles}
                 </div>
+                <h2 className='text'>{this.numJoined()} / {this.state.roles.length} Joined</h2>
             </div>
         )
     }
 }
 
 function Role(props){
-
-    return (
+        return (
         <div className='host-role'>
             <div className='host-role-text card'>
                 {props.role.roleName}: {props.role.playerName ? props.role.playerName : 'Open'}
