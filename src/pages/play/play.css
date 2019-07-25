@@ -27,27 +27,15 @@
     margin-bottom: 5%;
 }
 
-#players-list {
-    width: 8.5rem;
-    margin: auto;
-    margin-right: 0.5rem;
-    display: inline-block;
-    vertical-align: top;
-}
-
-#roles-list {
-    width: 8.5rem;
-    margin: auto;
-    margin-left: 0.5rem;
-    display: inline-block;
-    vertical-align: top;
-}
-
 #list-header {
     text-align: center;
     margin-top: 10%;
-    margin-bottom: 10%;
     color: #c10000;
+}
+
+td {
+    padding-left: 1rem;
+    padding-top: 1rem;
 }
 
 .available-role {
@@ -55,12 +43,12 @@
     font-size: 20;
     background: #c10000;
     border-radius: 1rem;
+    width: 7rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
     color: #dedede;
     font-size: 20px;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
     box-shadow: 10px 10px 5px #888888;
-    margin-bottom: 1rem;
 }
 
 .role-card {
