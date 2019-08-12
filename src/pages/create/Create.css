@@ -1,6 +1,16 @@
 .role-add{
     width: 20rem;
     margin: auto;
+    margin-bottom: 2rem;
+    display: flex;
+    height: 2.5rem;
+}
+
+#role-add-list{
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    margin: auto;
 }
 
 .role-add-name{

@@ -1,6 +1,7 @@
 import React from 'react'
 import AddRole from './AddRole.js';
-import AddedRole from './AddedRole.js'
+import AddedRole from './AddedRole.js';
+import RoleAdd from './RoleAdd.js';
 import Host from '../host/Host.js';
 import './Create.css'
 
@@ -13,6 +14,7 @@ export default class Create extends React.Component {
             Host: null
         };
         this.addRole = this.addRole.bind(this);
+        this.editRole = this.editRole.bind(this);
         this.renderAddedRoles = this.renderAddedRoles.bind(this);
         this.createGame = this.createGame.bind(this);
     }
@@ -20,14 +22,27 @@ export default class Create extends React.Component {
     renderAddedRoles() {
         let roles = [];
         for (let i = 0; i < this.state.addedRoles.length; i++){
-            roles.push(<AddedRole role={this.state.addedRoles[i]} key={i}/>)
+            if (this.state.addedRoles[i])
+                roles.push(<AddedRole role={this.state.addedRoles[i]} key={i} index={i} editRole={this.editRole}/>);
         }
         return roles;
     }
 
+    //Returns index of newly added role
     addRole(role) {
         this.setState({
             addedRoles: [...this.state.addedRoles, role]
+        })
+        return this.state.addedRoles.length-1;
+    }
+
+    editRole(i, newRole){
+        let temp = [...this.state.addedRoles];
+        temp[i] = newRole;
+        console.log('Edited the ' + i + 'th role to')
+        console.log(newRole)
+        this.setState({
+            addedRoles: temp
         })
     }
 
@@ -38,8 +53,10 @@ export default class Create extends React.Component {
         return(
             <div>
                 <h1 className='page-header'>Game Creation</h1>
+                <div id='role-add-list'>
                 {this.renderAddedRoles()}
                 <AddRole addRole={this.addRole}/>
+                </div>
                 <button className='main-menu-button' onClick={this.createGame}>Start Game</button>
             </div>
         );

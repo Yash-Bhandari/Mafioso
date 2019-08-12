@@ -1,13 +1,13 @@
 import React from 'react';
 import * as $ from 'jquery'
 
-export default function AddRole(props){
+export default function AddRole({role, addRole, afterEdit}){
     return (
       <div className='role-add'>
             {roleDataList}
-            <input className='role-add-name' placeholder='Role' list='possible-roles' onInput={handleInput}></input>
-            <input className='role-add-quantity' placeholder='#' type='number'></input>
-            <button className='role-add-submit' onClick={()=> handleClick(props.addRole)}>Add</button>
+            <input className='role-add-name' placeholder='Role' defaultValue={role?role.name:undefined} list='possible-roles' onInput={handleInput}></input>
+            <input className='role-add-quantity' placeholder='#' defaultValue={role?role.quantity:undefined} type='number'></input>
+            <button className='role-add-submit' onClick={e => handleClick(e, addRole, afterEdit)}>Add</button>
       </div>
     )
 }
@@ -27,18 +27,26 @@ const roleDataList = (
     </datalist>
 )
 
-function handleClick(addRoleFunction){
-    let roleName = $('input.role-add-name').val();
-    let roleQuantity = $('input.role-add-quantity').val();
-    if(roleQuantity === '')
-        roleQuantity = 1;
-        
-    $('input.role-add-name').val('')
-    $('input.role-add-quantity').val('')
-    addRoleFunction({
-        name: roleName,
-        quantity: roleQuantity
-    });
+function handleClick(e, addRoleFunction, afterEdit){
+    let roleName = $(e.target).parent().find('input.role-add-name').val();
+    let roleQuantity = $(e.target).parent().find('input.role-add-quantity').val();  
+    $(e.target).parent().find('input.role-add-name').val(undefined)
+    $(e.target).parent().find('input.role-add-quantity').val(undefined)
+
+    if(roleQuantity <= 0) 
+        addRoleFunction(null);
+
+    else {
+        if(roleQuantity === '')
+            roleQuantity = 1;
+
+        addRoleFunction({
+            name: roleName,
+            quantity: roleQuantity
+        });
+    }
+    if (afterEdit)
+        afterEdit();
 }
 
 function handleInput(){
@@ -53,5 +61,4 @@ function handleInput(){
             $('input.role-add-quantity').focus();
         }
     }
-
 }
