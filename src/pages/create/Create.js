@@ -1,7 +1,6 @@
 import React from 'react'
 import AddRole from './AddRole.js';
 import AddedRole from './AddedRole.js';
-import RoleAdd from './RoleAdd.js';
 import Host from '../host/Host.js';
 import './Create.css'
 
