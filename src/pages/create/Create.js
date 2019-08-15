@@ -45,6 +45,10 @@ export default class Create extends React.Component {
         })
     }
 
+    numPlayers(){
+        return this.state.addedRoles.reduce((total, role) => role ? total + parseInt(role.quantity) : total, 0);
+    }
+
     render(props){
         if (this.state.gameStarted) {
             return this.state.Host;
@@ -56,7 +60,7 @@ export default class Create extends React.Component {
                 {this.renderAddedRoles()}
                 <AddRole addRole={this.addRole}/>
                 </div>
-                <button className='main-menu-button' onClick={this.createGame}>Start Game</button>
+                <button className='main-menu-button' onClick={this.createGame}>Start Game ({this.numPlayers()} players)</button>
             </div>
         );
     }
