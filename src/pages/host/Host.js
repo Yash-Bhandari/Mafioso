@@ -28,7 +28,8 @@ export default class Host extends React.Component{
             return;
         serverLiason.getRoleList(this.props.id).then(
             roleList => {
-                this.setState({roles: roleList})
+                if (roleList)
+                    this.setState({roles: roleList})
             }
         );
     }
@@ -41,15 +42,30 @@ export default class Host extends React.Component{
     }
     
     isFull() {
-        return this.state.roles.every(role => role);
+        console.log(this.state.roles.every(role => role.filled))
+        return this.state.roles.every(role => role.filled);
+    }
+
+    kill(playerName) {
+        if (this.isFull()){
+            let temp = this.state.roles.slice();
+            temp.find(role=>role.playerName == playerName).alive = false;
+            this.setState({
+                roles: temp
+            })
+            this.state.serverLiason.killPlayer(playerName, this.state.id);
+        }
     }
 
     render(props) {
         let roles = [];
         let key = 0;
-        this.state.roles.forEach(role => {
-            roles.push(<Role role={role} key={key++}/>)
-        });
+        if (this.state.roles){
+            this.state.roles.forEach(role => {
+                roles.push(<Role role={role} key={key++} 
+                    kill={playerName=>this.kill(playerName)}/>)
+            });
+        }
         return (
             <div>
                 <h1 className='page-header'>Code: {this.state.gameCode}</h1>
@@ -63,12 +79,16 @@ export default class Host extends React.Component{
 }
 
 function Role(props){
-        return (
+    let className = 'host-role-text card';
+    let filledAndAlive = props.role.filled && props.role.alive;
+    if (!filledAndAlive)
+        className = 'host-role-dead ' + className;
+    return (
         <div className='host-role'>
-            <div className='host-role-text card'>
+            <div className={className}>
                 {props.role.roleName}: {props.role.playerName ? props.role.playerName : 'Open'}
              </div>
-            <div className='host-role-kill'>
+            <div className='host-role-kill' onClick={()=>props.kill(props.role.playerName)}>
                 <img id='rope-icon' src={rope}/>
             </div>
         </div>

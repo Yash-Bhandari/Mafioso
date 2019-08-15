@@ -16,11 +16,15 @@ export default function ServerLiason(backend, gameCode){
     }
 
     this.joinGame = async (playerName) => {
-        return fetch(this.backend + "join/" + this.gameCode + '?playerName=' + playerName, {method: 'POST'})
+        return fetch(backend + "join/" + gameCode + '?playerName=' + playerName, {method: 'POST'})
             .then(response => response.headers)
             .then(headers => ({
                 role: headers.get('role'),
                 id: headers.get('id'),
             }));
+    }
+
+    this.killPlayer = async(playerName, hostID) => {
+        fetch(backend + gameCode + '/' + hostID + '?playerName=' + playerName, {method: 'PUT'});
     }
 }
