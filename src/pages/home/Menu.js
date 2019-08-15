@@ -1,7 +1,6 @@
 import React from 'react';
 import './Home.css';
 import * as $ from 'jquery';
-import { tsPropertySignature } from '@babel/types';
 
 const baseUrl = 'http://localhost:3000/'
 
@@ -30,10 +29,15 @@ class JoinButton extends React.Component {
 }
 
 function InputButton (props) {
+    let handleEnter = (e) => {
+        if (e.keyCode === 13){
+            $('button.game-code-button').click();
+        }
+    }
     return (
         <div id='game-code'>
             <div id='game-code-input-left'>
-                <input id='game-code-input' type='text' placeholder='code' name='game-code' width='5'></input>
+                <input autoFocus id='game-code-input' type='text' placeholder='code' name='game-code' width='5' onKeyDown={e=>handleEnter(e)}></input>
             </div>
             <div id='game-code-input-right'>
                 <button className='game-code-button' onClick={()=>joinGame()}>Join Game</button>
@@ -44,7 +48,6 @@ function InputButton (props) {
 
 async function joinGame() {
     let gameCode = $('#game-code-input').val().toUpperCase();
-    console.log(gameCode);
     goTo(gameCode);
 
 }

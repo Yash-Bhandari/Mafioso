@@ -28,7 +28,6 @@ const roleDataList = (
 )
 
 function handleEnter(e){
-
     if (e.keyCode === 13){
         $(e.target).parent().find('button.role-add-submit').click();
     }
@@ -54,6 +53,8 @@ function handleClick(e, addRoleFunction, afterEdit){
     }
     if (afterEdit)
         afterEdit();
+    
+    $('input.role-add-name').focus();
 }
 
 function handleInput(){
