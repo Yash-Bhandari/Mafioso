@@ -33,10 +33,6 @@
     vertical-align: top;
 }
 
-.host-role-dead{
-    background-color: gray;
-}
-
 .host-role-kill {
     width: 3rem;
     height: 4rem;

@@ -66,4 +66,8 @@
     border-bottom-left-radius: 1rem;
     color: #dedede;
   }
+
+  .dead {
+    background: gray !important; 
+  }
  

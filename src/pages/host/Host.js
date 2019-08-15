@@ -82,7 +82,7 @@ function Role(props){
     let className = 'host-role-text card';
     let filledAndAlive = props.role.filled && props.role.alive;
     if (!filledAndAlive)
-        className = 'host-role-dead ' + className;
+        className = 'dead ' + className;
     return (
         <div className='host-role'>
             <div className={className}>

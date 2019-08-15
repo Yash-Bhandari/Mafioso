@@ -1,21 +1,20 @@
 import React from 'react';
 import './play.css'
-import { tsPropertySignature } from '@babel/types';
 
 export default function PlayersAndRoles(props){
     //console.log(props);
     let availableRoles = [];
     let joinedPlayers = [];
-    let key = 0;
-    props.roles.forEach(role => availableRoles.push(<Role role={role} key={key++}/>))
-    props.players.forEach(player => joinedPlayers.push(<Role role={player} key={key++}/>))
+    props.roles.forEach((role, i) => availableRoles.push(<Role role={role} key={i}/>))
+    props.roles.forEach((role, i) => joinedPlayers.push(<Role dead={true} key={i}/>));
+    props.players.forEach((player, i) => joinedPlayers[i] = <Role role={player} key={i}/>)
     
     return (
         <div id='players-and-roles'>
             <h2 id='list-header'>Players</h2>
-            <TableList roles={joinedPlayers}/>
+            <div className='list'>{joinedPlayers}</div>
             <h2 id='list-header'>Roles</h2>
-            <TableList roles={availableRoles}/>
+            <div className='list'>{availableRoles}</div>
         </div>
     
     )
@@ -41,8 +40,8 @@ function TableList(props) {
 
 function Role(props) {
     return(
-        <div className='available-role'>
-            {props.role}
-        </div>
+        props.dead
+        ? <div className='dead available-role'>Empty</div>
+        : <div className='available-role'>{props.role}</div>
     )
 }

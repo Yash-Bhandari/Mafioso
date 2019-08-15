@@ -6,7 +6,7 @@ export default function AddRole({role, addRole, afterEdit}){
       <div className='role-add'>
             {roleDataList}
             <input className='role-add-name' placeholder='Role' defaultValue={role?role.name:undefined} list='possible-roles' onInput={handleInput}></input>
-            <input className='role-add-quantity' placeholder='#' defaultValue={role?role.quantity:undefined} type='number'></input>
+            <input className='role-add-quantity' placeholder='#' defaultValue={role?role.quantity:undefined} type='number' onKeyDown={e => handleEnter(e)}></input>
             <button className='role-add-submit' onClick={e => handleClick(e, addRole, afterEdit)}>Add</button>
       </div>
     )
@@ -26,6 +26,13 @@ const roleDataList = (
         <option value='Townie'></option>
     </datalist>
 )
+
+function handleEnter(e){
+
+    if (e.keyCode === 13){
+        $(e.target).parent().find('button.role-add-submit').click();
+    }
+}
 
 function handleClick(e, addRoleFunction, afterEdit){
     let roleName = $(e.target).parent().find('input.role-add-name').val();

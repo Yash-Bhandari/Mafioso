@@ -33,6 +33,13 @@
     color: #c10000;
 }
 
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
 td {
     padding-left: 1rem;
     padding-top: 1rem;
@@ -46,6 +53,7 @@ td {
     width: 7rem;
     height: 2.5rem;
     line-height: 2.5rem;
+    margin-bottom: 1rem;
     color: #dedede;
     font-size: 20px;
     box-shadow: 10px 10px 5px #888888;
