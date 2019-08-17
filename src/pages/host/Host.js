@@ -24,7 +24,7 @@ export default class Host extends React.Component{
     }
 
     updateRoles(serverLiason) {
-        if (this.state.roles.length != 0 && this.numJoined() === this.state.roles.length)
+        if (this.state.roles.length !== 0 && this.numJoined() === this.state.roles.length)
             return;
         serverLiason.getRoleList(this.props.id).then(
             roleList => {

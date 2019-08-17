@@ -1,72 +1,76 @@
-import React from 'react';
-import * as $ from 'jquery'
+import React, { useState, useRef } from 'react';
 
-export default function AddRole({role, addRole, afterEdit}){
+export default function AddRole({ role, addRole, afterEdit }) {
+    const [name, setName] = useState(role ? role.name : '');
+    const [quantity, setQuantity] = useState(role ? role.quantity : '');
+    const nameInput = useRef(null);
+    const quantityInput = useRef(null);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!name) {
+            alert('Enter a name for the role');
+            return;
+        }
+
+        addRole({
+            name: name,
+            quantity: quantity > 0 ? quantity : 1
+        });
+
+        setName('');
+        setQuantity('');
+        nameInput.current.focus();
+        if (afterEdit)
+            afterEdit();
+    }
+
+    const handleNameInput = (e) => {
+        let newName = e.target.value; //newName is used instead of name as name will not be updated in time
+        setName(newName);
+
+        possibleRoles.forEach(r => {
+            if(r.toUpperCase() === newName.toUpperCase()){
+                setName(r);
+                quantityInput.current.focus();
+                return;
+            }
+        });
+    }
+
     return (
-      <div className='role-add'>
+        <form className='role-add' onSubmit={e => handleSubmit(e)}>
             {roleDataList}
-            <input className='role-add-name' placeholder='Role' defaultValue={role?role.name:undefined} list='possible-roles' onInput={handleInput}></input>
-            <input className='role-add-quantity' placeholder='#' defaultValue={role?role.quantity:undefined} type='number' onKeyDown={e => handleEnter(e)}></input>
-            <button className='role-add-submit' onClick={e => handleClick(e, addRole, afterEdit)}>Add</button>
-      </div>
+            <input
+                autoFocus
+                ref={nameInput}
+                className='role-add-name'
+                placeholder='Role'
+                value={name}
+                list='possible-roles'
+                onChange={e => handleNameInput(e)} />
+            <input
+                ref={quantityInput}
+                className='role-add-quantity'
+                placeholder='#'
+                value={quantity}
+                type='number'
+                onChange={e => setQuantity(e.target.value)} />
+            <button
+                className='role-add-submit'
+                type='submit'>
+                Add
+            </button>
+        </form>
     )
 }
 
+const possibleRoles = [
+    'Mafia', 'Doctor', 'Investigator', 'Jester', 'Vigilante', 
+    'Werewolf', 'Gravedigger', 'Lookout', 'Mayor', 'Townie']
 const roleDataList = (
     <datalist id='possible-roles'>
-        <option value='Mafia'></option>
-        <option value='Doctor'></option>
-        <option value='Investigator'></option>
-        <option value='Jester'></option>
-        <option value='Vigilante'></option>
-        <option value='Werewolf'></option>
-        <option value='Gravedigger'></option>
-        <option value='Lookout'></option>
-        <option value='Mayor'></option>
-        <option value='Townie'></option>
+        {possibleRoles.map(r => <option value={r}/>)}
     </datalist>
 )
 
-function handleEnter(e){
-    if (e.keyCode === 13){
-        $(e.target).parent().find('button.role-add-submit').click();
-    }
-}
-
-function handleClick(e, addRoleFunction, afterEdit){
-    let roleName = $(e.target).parent().find('input.role-add-name').val();
-    let roleQuantity = $(e.target).parent().find('input.role-add-quantity').val();  
-    $(e.target).parent().find('input.role-add-name').val(undefined)
-    $(e.target).parent().find('input.role-add-quantity').val(undefined)
-
-    if(roleQuantity <= 0) 
-        addRoleFunction(null);
-
-    else {
-        if(roleQuantity === '')
-            roleQuantity = 1;
-
-        addRoleFunction({
-            name: roleName,
-            quantity: roleQuantity
-        });
-    }
-    if (afterEdit)
-        afterEdit();
-    
-    $('input.role-add-name').focus();
-}
-
-function handleInput(){
-    let input = $('input.role-add-name')[0];
-    let options = $('#possible-roles')[0].options;
-
-    for (let i = 0; i < options.length; i++){
-        if (options.item(i).value.toUpperCase() === input.value.toUpperCase()) {
-            input.value = options.item(i).value;    
-        }
-        if (options.item(i).value === input.value) {
-            $('input.role-add-quantity').focus();
-        }
-    }
-}
