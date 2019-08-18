@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './Home.css';
 
-const baseUrl = 'http://localhost:3000/'
+const baseUrl = 'http://localhost:3000/';
 
 export default function Menu(props){
     return (
@@ -32,12 +32,20 @@ function InputButton (props) {
 
     const joinGame = e => {
         e.preventDefault();
-        goTo(gameCode);
+        //Checking to see if backend is online and game is set up
+        fetch(props.backend+gameCode)
+            .catch(() => alert('Please wait while the server spools up.'))
+            .then(response => {
+                if (response.status !== 200)
+                    throw new Error('Game not found');
+                else
+                    goTo(gameCode);
+            }).catch(err => alert('That is not a valid game code'))
     }
     return (
         <form id='game-code' onSubmit={e=>joinGame(e)}>
             <div id='game-code-input-left'>
-                <input autoFocus id='game-code-input' value={gameCode} onChange={e=>setGameCode(e.target.value)} type='text' placeholder='code' name='game-code' width='5'/>
+                <input autoFocus id='game-code-input' value={gameCode} onChange={e=>setGameCode(e.target.value.toUpperCase())} type='text' placeholder='code' name='game-code' width='5'/>
             </div>
             <div id='game-code-input-right'>
                 <button className='game-code-button' type='submit'>Join Game</button>
