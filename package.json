@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "https://mafioso.red",
   "dependencies": {
-    "jquery": "^3.4.1",
     "react": "^16.8.6",
     "react-browser-router": "^2.1.2",
     "react-dom": "^16.8.6",

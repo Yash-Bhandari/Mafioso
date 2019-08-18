@@ -14,7 +14,6 @@ export default class Host extends React.Component{
     }
 
     componentDidMount(){
-        console.log(this.props.backend + this.props.gameCode + '/' + this.props.id)
         let serverLiason = new ServerLiason(this.props.backend, this.props.gameCode);
         this.updateRoles(serverLiason);
         this.setState({
@@ -42,7 +41,6 @@ export default class Host extends React.Component{
     }
     
     isFull() {
-        console.log(this.state.roles.every(role => role.filled))
         return this.state.roles.every(role => role.filled);
     }
 

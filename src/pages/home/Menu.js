@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Home.css';
-import * as $ from 'jquery';
 
 const baseUrl = 'http://localhost:3000/'
 
@@ -29,27 +28,22 @@ class JoinButton extends React.Component {
 }
 
 function InputButton (props) {
-    let handleEnter = (e) => {
-        if (e.keyCode === 13){
-            $('button.game-code-button').click();
-        }
+    let [gameCode, setGameCode] = useState('');
+
+    const joinGame = e => {
+        e.preventDefault();
+        goTo(gameCode);
     }
     return (
-        <div id='game-code'>
+        <form id='game-code' onSubmit={e=>joinGame(e)}>
             <div id='game-code-input-left'>
-                <input autoFocus id='game-code-input' type='text' placeholder='code' name='game-code' width='5' onKeyDown={e=>handleEnter(e)}></input>
+                <input autoFocus id='game-code-input' value={gameCode} onChange={e=>setGameCode(e.target.value)} type='text' placeholder='code' name='game-code' width='5'/>
             </div>
             <div id='game-code-input-right'>
-                <button className='game-code-button' onClick={()=>joinGame()}>Join Game</button>
+                <button className='game-code-button' type='submit'>Join Game</button>
             </div>
-        </div>
+        </form>
     )
-}
-
-async function joinGame() {
-    let gameCode = $('#game-code-input').val().toUpperCase();
-    goTo(gameCode);
-
 }
 
 function goTo(location) {
