@@ -9,6 +9,7 @@ export default class Join extends React.Component {
         super(props);
         this.state = {
             joined: false,
+            yourName: '',
             yourRole: null,
             id: null,
             roles: [],
@@ -43,9 +44,14 @@ export default class Join extends React.Component {
         return this.state.roles.length === this.state.players.length;
     }
 
-    async joinGame() {
-        let playerName = document.getElementById('join-username').value;
-        this.state.serverLiason.joinGame(playerName).then(
+    joinGame = async e => {
+        e.preventDefault();
+        if (this.state.players.some(p => p.toUpperCase() === this.state.yourName.toUpperCase())){
+            alert('That name is taken.')
+            return;
+        }
+
+        this.state.serverLiason.joinGame(this.state.yourName).then(
             reply => this.setState({
                 joined: true,
                 yourRole: reply.role,
@@ -59,10 +65,15 @@ export default class Join extends React.Component {
             <div>
                 <PlayersAndRoles roles={this.state.roles} players={this.state.players}/>
                 {!this.isFull() && !this.state.joined &&
-                <div id='join-choose-name'>
-                    <input id='join-username' placeholder='Your Name' type='text'></input>
-                    <button id='join-submit' onClick={()=>this.joinGame()}>Get Role</button>
-                </div>}
+                <form onSubmit={e=>this.joinGame(e)}id='join-choose-name'>
+                    <input 
+                        id='join-username' 
+                        value={this.state.yourName}
+                        onChange={e => this.setState({yourName: e.target.value})}
+                        placeholder='Your Name' 
+                        type='text'/>
+                    <button id='join-submit' type='submit'>Get Role</button>
+                </form>}
                 {this.state.joined ?
                     <RoleCard role={this.state.yourRole}/> :
                     (this.isFull() && <h2 className='text'></h2>)
