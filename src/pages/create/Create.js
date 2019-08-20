@@ -12,6 +12,7 @@ export default class Create extends React.Component {
             gameStarted: false, 
             Host: null
         };
+        this.startButton = React.createRef();
         this.addRole = this.addRole.bind(this);
         this.editRole = this.editRole.bind(this);
         this.renderAddedRoles = this.renderAddedRoles.bind(this);
@@ -60,12 +61,13 @@ export default class Create extends React.Component {
                 {this.renderAddedRoles()}
                 <AddRole addRole={this.addRole}/>
                 </div>
-                <button className='main-menu-button' onClick={this.createGame}>Start Game ({this.numPlayers()} players)</button>
+                <button className='main-menu-button' ref={this.startButton} onClick={this.createGame}>Start Game ({this.numPlayers()} players)</button>
             </div>
         );
     }
 
     createGame = async function(){
+        this.startButton.current.setAttribute('disabled', 'disabled');
         let roleList = [];
         for (let j = 0; j < this.state.addedRoles.length; j++){
             let roleType = this.state.addedRoles[j];

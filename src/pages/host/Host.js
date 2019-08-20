@@ -3,8 +3,8 @@ import ServerLiason from '../../utilities/serverLiason';
 import './Host.css';
 import rope from './rope-icon.svg';
 
-export default class Host extends React.Component{
-    constructor(props){
+export default class Host extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
             id: this.props.id,
@@ -13,11 +13,11 @@ export default class Host extends React.Component{
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         let serverLiason = new ServerLiason(this.props.backend, this.props.gameCode);
         this.updateRoles(serverLiason);
         this.setState({
-            updater: window.setInterval(()=>this.updateRoles(serverLiason), 2000),
+            updater: window.setInterval(() => this.updateRoles(serverLiason), 2000),
             serverLiason: serverLiason
         });
     }
@@ -28,26 +28,26 @@ export default class Host extends React.Component{
         serverLiason.getRoleList(this.props.id).then(
             roleList => {
                 if (roleList)
-                    this.setState({roles: roleList})
+                    this.setState({ roles: roleList })
             }
         );
     }
 
-    numJoined(){
+    numJoined() {
         return this.state.roles.reduce(
             (total, role) => total += role.playerName === "" ? 0 : 1,
             0
         );
     }
-    
+
     isFull() {
         return this.state.roles.every(role => role.filled);
     }
 
     kill(playerName) {
-        if (this.isFull()){
+        if (this.isFull()) {
             let temp = this.state.roles.slice();
-            temp.find(role=>role.playerName == playerName).alive = false;
+            temp.find(role => role.playerName == playerName).alive = false;
             this.setState({
                 roles: temp
             })
@@ -58,12 +58,10 @@ export default class Host extends React.Component{
     render(props) {
         let roles = [];
         let key = 0;
-        if (this.state.roles){
-            this.state.roles.forEach(role => {
-                roles.push(<Role role={role} key={key++} 
-                    kill={playerName=>this.kill(playerName)}/>)
-            });
-        }
+        this.state.roles.forEach(role => {
+            roles.push(<Role role={role} key={key++}
+                kill={playerName => this.kill(playerName)} />)
+        });
         return (
             <div>
                 <h1 className='page-header'>Code: {this.state.gameCode}</h1>
@@ -76,7 +74,7 @@ export default class Host extends React.Component{
     }
 }
 
-function Role(props){
+function Role(props) {
     let className = 'host-role-text card';
     let filledAndAlive = props.role.filled && props.role.alive;
     if (!filledAndAlive)
@@ -85,15 +83,15 @@ function Role(props){
         <div className='host-role'>
             <div className={className}>
                 {props.role.roleName}: {props.role.playerName ? props.role.playerName : 'Open'}
-             </div>
-            <div className='host-role-kill' onClick={()=>props.kill(props.role.playerName)}>
-                <img id='rope-icon' src={rope}/>
+            </div>
+            <div className='host-role-kill' onClick={() => props.kill(props.role.playerName)}>
+                <img id='rope-icon' src={rope} />
             </div>
         </div>
     )
 }
 
-function role(playerName, roleName){
+function role(playerName, roleName) {
     return {
         playerName: playerName,
         roleName: roleName
